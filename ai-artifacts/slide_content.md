@@ -1,368 +1,277 @@
-# AI 101 — Slide Content Outline
-**Theme:** Light, technical, professional
+# AI 101 - Technical Briefing: LLM Integration & Workflows
+**Theme:** Technical, professional, modern AI engineering
 **Role:** Senior AI Solutions Architect
-**Slide Count:** 12
 
 ---
 
-## Slide 1 — Cover
+## Slide 1 - Cover
 
-**Title:** AI 101
+**Heading:** AI 101: A Workshop on Modern AI Concepts
+
 **Subtitle:** From Foundations to Agentic Systems
-**Presenter Role:** Senior AI Solutions Architect
-**Visual style:** Clean light background, bold sans-serif typography, subtle circuit/neural-net accent graphic in muted blue tones
+
+**Visuals:** Clean background with a neural-net path graphic in blue tones
 
 **Notes:**
-Welcome to AI 101 — a technical primer designed for practitioners and decision-makers who want to move beyond buzzwords and understand how modern AI systems are architected, prompted, and deployed. This session covers the full spectrum from foundational concepts to advanced agentic patterns, RAG pipelines, and security considerations.
+Welcome to AI 101. This workshop is a technical primer designed for practitioners to move beyond buzzwords and understand the architecture, prompting, and deployment of modern AI systems. We will cover the full spectrum from foundational concepts to advanced agentic patterns, RAG pipelines, and security considerations.
 
 ---
 
-## Slide 2 — Index / Agenda
+## Slide 2 - Agenda
 
-**Heading:** What We'll Cover Today
+**Heading:** Technical Briefing: LLM Integration & Workflows
 
-| # | Topic |
-|---|-------|
-| 1 | AI Evolution: Static → Agentic |
-| 2 | Prompts & Prompt Engineering |
-| 3 | Model Comparison |
-| 4 | Copilot Instructions & Context |
-| 5 | Prompt & Output Templates |
-| 6 | Agents, Subagents & Personas |
-| 7 | Skills & Spec Kits |
-| 8 | RAG & GraphRAG |
-| 9 | Code Review Tools |
-| 10 | Security in AI Systems |
-| 11 | Conclusion |
+**Content:**
+- The Basics: Evolution, Prompts and Models
+- The Controls: Instructions, Context and Consumption
+- The Architecture: Agents, Skills and Personas
+- The Workflow: Methodologies (SDD, BMAD)
+- The Safeguards: RAG, Code Review and Security
 
 **Notes:**
-This index gives you a roadmap for the session. We move from conceptual foundations through practical engineering patterns, then into advanced retrieval architectures, tooling, and security. Each section builds on the previous one, so by the end you'll have a coherent mental model of the modern AI stack.
+This agenda provides a roadmap for moving from conceptual foundations through practical engineering patterns and into advanced retrieval architectures and security.
 
 ---
 
-## Slide 3 — AI Evolution: From Static to Agentic
+## Slide 3 - AI Evolution: From Passive Tool to Active Partner
 
 **Heading:** AI Has Evolved From Rule-Based Responses to Autonomous, Multi-Step Reasoning
 
 **Content:**
-
-**Four Generations of AI Capability:**
-
-| Stage | Paradigm | Capability | Example |
-|-------|----------|------------|---------|
-| **Static** | Rule-based / scripted | Fixed responses, no learning | FAQ bots, decision trees |
-| **Generative** | LLM inference | Open-ended text, code, images | GPT-3, DALL-E |
-| **Instructable** | Fine-tuned + RLHF | Role-aware, steerable output | GPT-4, Claude, Gemini |
-| **Agentic** | Tool-use + planning loops | Multi-step tasks, memory, APIs | AutoGPT, Copilot Agents |
-
-**Key insight:** Agentic AI doesn't just respond — it **plans, acts, observes, and iterates** using tools, memory, and subagents.
+- Static Scripts: Hard-coded logic; fixed responses with no learning (e.g., FAQ bots)
+- Generative AI: Conversational and probabilistic; open-ended text, code, and images (e.g., GPT-3, DALL-E)
+- Agentic Workflows: Autonomous and goal-oriented; uses tool-use and planning loops to act and iterate
 
 **Notes:**
-The shift from static to agentic is the single most important architectural transition in modern AI. Static systems were deterministic and brittle. Generative models introduced probabilistic, open-ended output. Instructable models added alignment and steerability. Agentic systems go further: they decompose goals into subtasks, invoke external tools (APIs, code interpreters, search), maintain state across turns, and delegate to specialized subagents. This is the paradigm that underpins Copilot, AutoGPT, and enterprise AI orchestration platforms.
+The shift to agentic AI is the most important architectural transition today. Unlike generative models that just respond, agentic systems plan, act, and observe using tools and memory.
 
 ---
 
-## Slide 4 — Prompts & Model Comparison
+## Slide 4 - The Art of Prompting: R-C-T-C
 
 **Heading:** The Quality of Your Prompt Determines the Quality of Your Output
 
-**Left column — Prompt Engineering Fundamentals:**
-
-- **Role** — Define who the model is: `"Act as a Senior Security Engineer..."`
-- **Context** — Provide relevant background and constraints
-- **Task** — State the specific action clearly and unambiguously
-- **Format** — Specify output structure: JSON, Markdown table, bullet list
-- **Examples** — Few-shot examples dramatically improve precision
-
-**Right column — Model Comparison (2025):**
-
-| Model | Strengths | Context Window | Best For |
-|-------|-----------|----------------|----------|
-| GPT-4.1 | Reasoning, code | 128K | Complex tasks, agents |
-| Claude 3.7 | Long docs, safety | 200K | Document analysis |
-| Gemini 2.5 | Multimodal, speed | 1M | Large-scale retrieval |
-| Llama 3.3 | Open-source, cost | 128K | On-prem, fine-tuning |
-| Mistral | Lightweight, fast | 32K | Edge, low-latency |
+**Content:**
+- Role: Who is the AI? (e.g., "Act as a Senior Architect")
+- Context: Background info (e.g., "Given the current Next.js stack")
+- Task: Actionable instruction (e.g., "Refactor the API route")
+- Constraints: Format and limits (e.g., "Return only JSON")
 
 **Notes:**
-Prompt engineering is the primary interface between human intent and model behavior. The Role-Context-Task-Format-Examples (RCTFE) framework is a reliable scaffold for consistent, high-quality outputs. Model selection is equally important: GPT-4.1 excels at multi-step reasoning and code generation; Claude 3.7 handles very long documents with high fidelity; Gemini 2.5 Pro offers the largest context window at 1M tokens, ideal for RAG over massive corpora; Llama 3.3 is the go-to for on-premises deployments where data sovereignty is required.
+The R-C-T-C (Role-Context-Task-Constraint) framework is a reliable scaffold for consistent, high-quality outputs. Adding few-shot examples can further improve precision.
 
 ---
 
-## Slide 5 — Copilot Instructions & Context Management
+## Slide 5 - Model Comparison: Speed vs. Reasoning
 
-**Heading:** Copilot Instructions Shape Behavior; Context Below 70% Prevents Hallucinations
+**Heading:** Matching Model Capabilities to Task Profiles
 
-**Left column — Copilot Instructions:**
-
-- Defined in `.github/copilot-instructions.md` or system prompt
-- Set **persona**, **coding standards**, **output format**, and **guardrails**
-- Scoped at: Repository level · Organization level · User level
-- Example directives:
-  - `"Always add JSDoc comments to exported functions"`
-  - `"Prefer functional React components with TypeScript"`
-  - `"Never suggest deprecated APIs"`
-
-**Right column — Context & Hallucination Control:**
-
-- **Context window** = total tokens the model can "see" at once
-- **Target: keep context utilization below 70%**
-  - Leaves headroom for reasoning and response generation
-  - Reduces compression artifacts and attention degradation
-- **Hallucination** = model generates plausible but factually incorrect output
-  - Cause: insufficient grounding, context overflow, ambiguous prompts
-  - Mitigations: RAG, temperature reduction, explicit grounding instructions, self-consistency checks
+**Content:**
+| Model Type | Examples (2025-26) | Best For | Context/Latency |
+| :--- | :--- | :--- | :--- |
+| Fast / Lightweight | Haiku | Syntax checks, simple Q&A | Low Latency |
+| General Purpose | GPT-5.3-Codex | Daily coding, docs, unit tests | The Daily Driver |
+| Deep Reasoning | Claude Opus 4.6 | Architecture, debugging | High Latency and Cost |
 
 **Notes:**
-Copilot instructions are the enterprise control plane for AI behavior. By codifying standards in instruction files, teams ensure consistent, policy-compliant output across all developers. On context management: the 70% rule is a practical heuristic — models begin to "forget" or conflate information as the context window fills. Keeping utilization below 70% preserves attention quality. Hallucinations are the most dangerous failure mode in production AI; they are best mitigated through retrieval-augmented grounding, structured output schemas, and human-in-the-loop validation for high-stakes decisions.
+Model selection is a trade-off between speed and depth. Lightweight models are ideal for edge tasks; deep reasoning models are necessary for complex system architecture.
 
 ---
 
-## Slide 6 — Prompt & Output Templates · Agents & Subagents
+## Slide 6 - Copilot Instructions
 
-**Heading:** Templates Standardize Quality; Agents Decompose Complexity Into Coordinated Action
+**Heading:** Enterprise Control Plane for AI Behavior
 
-**Left column — Prompt & Output Templates:**
-
-**Prompt Template Structure:**
-```
-ROLE: [Persona definition]
-CONTEXT: [Background + constraints]
-TASK: [Specific instruction]
-FORMAT: [Output schema / structure]
-EXAMPLES: [1–3 few-shot samples]
-```
-
-**Output Template Types:**
-- **Structured JSON** — for API consumption and downstream processing
-- **Markdown Report** — for human-readable documentation
-- **Code Block** — for executable artifacts with inline comments
-- **Tabular Summary** — for comparison and decision support
-
-**Right column — Agents & Subagents:**
-
-```
-Orchestrator Agent
-├── Planning Subagent      → Decomposes goal into tasks
-├── Research Subagent      → Web search, RAG retrieval
-├── Code Subagent          → Writes, tests, debugs code
-├── Review Subagent        → Validates output quality
-└── Memory Subagent        → Manages context & state
-```
-
-- **Orchestrator** holds the goal and delegates
-- **Subagents** are specialized, tool-equipped workers
-- Communication via **structured messages** (JSON schema)
-- State managed via **short-term** (context) and **long-term** (vector DB) memory
+**Content:**
+- Location: Defined in .github/copilot-instructions.md
+- Persistent Context: Rules apply to every chat session
+- Repository Level: Enforces engineering standards (for example, "Use TypeScript, No SQL")
 
 **Notes:**
-Templates are the engineering discipline that separates ad-hoc AI use from production-grade AI systems. Standardized prompt templates ensure reproducibility; output templates ensure downstream compatibility. On the agentic side: the orchestrator-subagent pattern mirrors microservices architecture — each subagent has a single responsibility, a defined interface, and can be independently upgraded or replaced. This is the architecture behind Microsoft Copilot Studio, LangGraph, and AutoGen multi-agent frameworks.
+Copilot instructions allow organizations to codify standards, ensuring consistent and policy-compliant output across all developer workflows.
 
 ---
 
-## Slide 7 — Personas & Skills
+## Slide 7 - Consumption & Token Economics
 
-**Heading:** Personas Define Who the AI Is; Skills Define What It Can Do
+**Heading:** Balancing Reasoning Depth with Quota Costs
 
-**Left column — Personas:**
-
-A **Persona** is a named, role-specific identity configuration:
-
-```yaml
-persona: "Senior Security Architect"
-tone: "precise, risk-aware, formal"
-expertise: ["zero-trust", "SIEM", "threat modeling"]
-constraints:
-  - "Never recommend deprecated protocols"
-  - "Always cite CVE references for vulnerabilities"
-  - "Flag any GDPR-relevant data handling"
-```
-
-- Personas ensure **consistent voice** and **domain expertise** across sessions
-- Can be scoped to teams, projects, or individual workflows
-- Composable: combine multiple personas for cross-domain tasks
-
-**Right column — Skills:**
-
-A **Skill** is a reusable, modular capability unit:
-
-| Skill | Description | Trigger |
-|-------|-------------|---------|
-| `web-search` | Live internet retrieval | "search for..." |
-| `code-interpreter` | Execute Python/JS in sandbox | "run this code" |
-| `document-reader` | Parse PDF/Word/Excel | "analyze this file" |
-| `image-generator` | Create visuals from text | "generate an image" |
-| `api-caller` | Invoke REST/GraphQL endpoints | "call the API" |
-| `memory-recall` | Retrieve from vector store | "remember when..." |
+**Content:**
+- Standard vs Premium: High-reasoning models often consume more quota
+- Multiplier: Smart models (Opus/o1) may have a 3x multiplier on token costs
+- Strategy: Use 'Auto' mode to balance cost and performance automatically
 
 **Notes:**
-Personas and skills are the two axes of agent customization. Personas answer "who is the agent?" — they encode domain knowledge, communication style, and behavioral guardrails. Skills answer "what can the agent do?" — they are the tool-belt of callable capabilities. In Microsoft Copilot Studio, skills map to actions and connectors. In LangChain, they map to tools. The combination of a well-defined persona and a curated skill set produces an agent that is both trustworthy and capable.
+Efficient AI engineering requires understanding token economics. Use expensive reasoning models only when task complexity justifies the cost multiplier.
 
 ---
 
-## Slide 8 — Spec Kits: BMAD & Open Spec
+## Slide 8 - Context & Hallucinations
 
-**Heading:** Spec Kits Translate Business Intent Into Executable AI Architecture
+**Heading:** Context Below 70% Prevents Hallucinations
 
-**What is a Spec Kit?**
-A **Spec Kit** is a structured documentation framework that bridges business requirements and AI system design. It ensures alignment between stakeholders, architects, and AI agents.
-
-**BMAD Method (Business, Model, Agent, Data):**
-
-| Layer | Focus | Key Artifacts |
-|-------|-------|---------------|
-| **B**usiness | Goals, KPIs, constraints | PRD, user stories, success metrics |
-| **M**odel | AI model selection & config | Model card, prompt templates, eval criteria |
-| **A**gent | Agent design & orchestration | Agent graph, persona definitions, skill registry |
-| **D**ata | Data sources, RAG config, governance | Data catalog, embedding strategy, access controls |
-
-**Open Spec:**
-- Open, version-controlled specification format for AI systems
-- Defines: system prompt, tools, memory config, guardrails, eval harness
-- Enables **reproducibility**, **auditability**, and **team collaboration**
-- Analogous to OpenAPI for REST APIs — a contract for AI behavior
+**Content:**
+- Context Rot: Utilizing more than 70% of context capacity degrades reasoning quality
+- Hallucinations: AI inventing plausible but factually incorrect information
+- Mitigation: Provide a clean context stream using RAG and reduce temperature
 
 **Notes:**
-The BMAD method is a practitioner framework for decomposing AI projects into four tractable layers. Starting with Business ensures the AI system is solving the right problem. Model selection is driven by the task profile, not hype. Agent design specifies the orchestration topology. Data governance is often the most underestimated layer — poor data quality is the leading cause of AI project failure. Open Spec brings software engineering discipline to AI: version control your prompts, your agent graphs, and your eval criteria just as you version control your code.
+Models begin to forget or conflate information as the context window fills. The 70% rule is a practical heuristic for maintaining attention quality.
 
 ---
 
-## Slide 9 — RAG & GraphRAG
+## Slide 9 - Templates & Standardization
 
-**Heading:** RAG Grounds AI in Facts; GraphRAG Adds Relational Intelligence
+**Heading:** Templates Standardize Quality
 
-**Left column — RAG (Retrieval-Augmented Generation):**
-
-```
-User Query
-    │
-    ▼
-[Embedding Model] → Query Vector
-    │
-    ▼
-[Vector Database] → Top-K Relevant Chunks
-    │
-    ▼
-[LLM] + [Retrieved Context] → Grounded Response
-```
-
-- Eliminates hallucinations by grounding responses in retrieved documents
-- Supports: PDFs, wikis, databases, APIs, SharePoint, Confluence
-- Key metrics: **Recall@K**, **MRR**, **Faithfulness**, **Answer Relevance**
-
-**Right column — GraphRAG:**
-
-```
-Documents → Entity Extraction → Knowledge Graph
-                                      │
-User Query → Graph Traversal → Relevant Subgraph
-                                      │
-                              LLM + Subgraph → Response
-```
-
-- Extends RAG with **entity relationships** and **graph traversal**
-- Excels at: multi-hop reasoning, organizational knowledge, causal chains
-- Microsoft GraphRAG: community detection + summarization at scale
-- **When to use GraphRAG:** complex, interconnected knowledge domains (legal, medical, enterprise architecture)
+**Content:**
+- Don't Reinvent the Wheel: Use structured prompt templates for reproducibility
+- Storage: Keep prompts in prompts.md for team collaboration
+- Force Formats: Require explicit JSON or Markdown for downstream compatibility
 
 **Notes:**
-RAG is now the standard architecture for enterprise AI that requires factual accuracy. By retrieving relevant chunks from a vector database at inference time, RAG decouples knowledge from model weights — you can update your knowledge base without retraining. GraphRAG goes further by representing knowledge as a graph of entities and relationships. This enables multi-hop reasoning: "What are the security implications of the vendor's API, given our data classification policy and the recent CVE?" — a query that requires traversing multiple connected concepts. Microsoft's open-source GraphRAG library is the leading implementation for enterprise-scale deployments.
+Standardized templates are the engineering discipline that separates ad-hoc use from production-grade AI systems.
 
 ---
 
-## Slide 10 — Code Review Tools & Security
+## Slide 10 - Agents & Subagents
 
-**Heading:** AI-Powered Code Review and Security Controls Are Now Essential Engineering Infrastructure
+**Heading:** Decomposing Complexity Into Coordinated Action
 
-**Left column — Code Review Tools:**
-
-| Tool | Capability | Integration |
-|------|------------|-------------|
-| **GitHub Copilot** | Inline suggestions, PR review | VS Code, GitHub |
-| **CodeRabbit** | Automated PR summaries, issue detection | GitHub, GitLab |
-| **Cursor** | Full-codebase context, refactoring | IDE |
-| **Snyk** | Vulnerability scanning, SAST | CI/CD pipeline |
-| **SonarQube + AI** | Code quality + AI-assisted fixes | Jenkins, Azure DevOps |
-| **Amazon CodeGuru** | Performance & security reviewer | AWS CodeCommit |
-
-**Right column — Security in AI Systems:**
-
-**OWASP LLM Top 10 — Critical Risks:**
-1. **Prompt Injection** — Malicious input hijacks model behavior
-2. **Insecure Output Handling** — Unvalidated AI output executed downstream
-3. **Training Data Poisoning** — Corrupted data degrades model integrity
-4. **Model Denial of Service** — Resource exhaustion via adversarial inputs
-5. **Sensitive Information Disclosure** — PII/secrets leaked in responses
-
-**Mitigations:**
-- Input/output sanitization and schema validation
-- Least-privilege tool access for agents
-- Audit logging of all AI interactions
-- Human-in-the-loop for high-stakes decisions
-- Red-teaming and adversarial testing
+**Content:**
+- Agent (The Manager): Orchestrates goals and delegates tasks
+- Subagents: Specialized workers for Research, Coding, and Review
+- Execution Loop: Plan -> Test -> Fix
+- Parallel Execution: Subagents can work simultaneously on partitioned tasks
 
 **Notes:**
-AI code review tools have matured rapidly. GitHub Copilot's PR review feature can now summarize changes, flag potential bugs, and suggest improvements inline. CodeRabbit provides automated, contextual PR feedback that reduces reviewer fatigue. On security: the OWASP LLM Top 10 is the authoritative reference for AI-specific threat modeling. Prompt injection is the most prevalent attack vector — an attacker embeds instructions in user input that override the system prompt. Defense requires strict input validation, output schema enforcement, and sandboxed tool execution. Every production AI system should have an audit log of all model interactions for forensic and compliance purposes.
+The orchestrator-subagent pattern mirrors microservices. Each subagent has a single responsibility and communicates via structured messages.
 
 ---
 
-## Slide 11 — Copilot Agents Ecosystem
+## Slide 11 - Personas: Changing the Lens
 
-**Heading:** The Copilot Ecosystem Connects AI Agents Across Every Layer of the Enterprise Stack
+**Heading:** Personas Define Who the AI Is
 
-**Microsoft Copilot Ecosystem:**
-
-```
-Microsoft 365 Copilot
-├── Word / Excel / PowerPoint / Outlook / Teams
-│
-GitHub Copilot
-├── Code completion · PR Review · Copilot Chat · Workspace
-│
-Copilot Studio
-├── Custom Agents · Skills · Connectors · Knowledge Sources
-│
-Azure AI Foundry
-├── Model Catalog · Prompt Flow · Evaluation · Deployment
-│
-Copilot+ PC
-└── On-device inference · Recall · Cocreator
-```
-
-**Deployment Patterns:**
-- **Embedded** — Copilot within existing Microsoft apps
-- **Custom Agent** — Built in Copilot Studio, deployed to Teams/web
-- **Autonomous Agent** — Trigger-based, runs without human initiation
-- **Multi-Agent** — Orchestrator delegates to specialist agents
+**Content:**
+- Senior Architect: Focuses on system design and trade-offs
+- QA Engineer: Focuses on edge cases and failure modes
+- Security Analyst: Focuses on vulnerabilities and injection risks
+- Implementation: Define these identities in persona.md
 
 **Notes:**
-The Microsoft Copilot ecosystem is the most widely deployed enterprise AI platform, reaching over 300 million Microsoft 365 users. Understanding its layers is essential for enterprise AI architects. Copilot Studio is the low-code/pro-code platform for building custom agents with specific knowledge sources, skills, and connectors to enterprise systems. Azure AI Foundry is the MLOps platform for model evaluation, fine-tuning, and production deployment. The shift to autonomous and multi-agent patterns represents the frontier of enterprise AI deployment in 2025–2026.
+Personas ensure domain expertise and a consistent voice. Composing multiple personas can assist in complex cross-domain tasks.
 
 ---
 
-## Slide 12 — Conclusion & Next Steps
+## Slide 12 - Skills
 
-**Heading:** AI Mastery Requires Architectural Thinking, Not Just Prompt Creativity
+**Heading:** Skills Define What the AI Can Do
 
-**Key Takeaways:**
-
-| Concept | Core Principle |
-|---------|---------------|
-| **AI Evolution** | We are in the Agentic era — design for autonomy and orchestration |
-| **Prompts & Models** | Match model capabilities to task profiles; engineer prompts systematically |
-| **Context & Hallucinations** | Keep context < 70%; ground responses with RAG |
-| **Agents & Skills** | Decompose complexity; build modular, composable agent systems |
-| **Spec Kits** | Treat AI systems as engineered products with versioned specifications |
-| **RAG / GraphRAG** | Retrieval is the foundation of factual, trustworthy AI |
-| **Security** | Apply OWASP LLM Top 10; audit, validate, and red-team continuously |
-
-**Your Next Steps:**
-1. Define your **Copilot Instructions** for your team's repositories
-2. Build a **RAG pipeline** over your internal knowledge base
-3. Design your first **multi-agent workflow** using BMAD
-4. Establish an **AI security review** process in your CI/CD pipeline
+**Content:**
+- Definition: Portable capabilities consisting of instructions and scripts
+- Standard: Define skills in SKILL.md for reusability
+- Examples: Database migration, terminal access, web search
 
 **Notes:**
-The central message of AI 101 is this: AI is now an engineering discipline, not a magic box. The teams that win are those who apply the same rigor to AI systems that they apply to software architecture — versioned specifications, modular design, security-first thinking, and continuous evaluation. Start small: pick one use case, apply the BMAD framework, build a RAG-grounded agent with clear persona and skills, and measure outcomes against defined KPIs. Then scale what works. The agentic era is here — architect for it deliberately.
+Skills are the tool-belt of callable capabilities and map to tools or connectors that let the AI interact with systems and the web.
 
 ---
+
+## Slide 13 - MCP (Model Context Protocols)
+
+**Heading:** Standardizing Interoperability Between Models and Tools
+
+**Content:**
+- Standardized Method: Defines how models obtain context from external sources
+- Explicit Protocols: Handles context passing and prevents ambiguity
+- Interoperability: Facilitates communication between different models and specialized tools
+
+**Notes:**
+MCP reduces ambiguity in complex systems where multiple models must share a unified context.
+
+---
+
+## Slide 14 - Methodologies: SDD & BMAD
+
+**Heading:** Translating Business Intent Into Executable Architecture
+
+**Content:**
+- SDD (Spec-Driven Development): Define the spec (what), validate the plan, execute the code (how)
+- BMAD: Business, Model, Agent, Data - an AI-driven development lens
+- Agile and iterative: Use AI for code, tests, and validation in short cycles
+
+**Notes:**
+BMAD ensures AI development aligns with business goals while SDD brings software engineering rigor to prompt and model management.
+
+---
+
+## Slide 15 - RAG: Retrieval-Augmented Generation
+
+**Heading:** Grounding AI in Facts via Private Data
+
+**Content:**
+- Process: Retrieve (private data) -> Augment (the prompt) -> Generate (the response)
+- Goal: Eliminate hallucinations by using a database as a source of truth
+- Data Sources: Database servers, PDFs, local files
+
+**Notes:**
+RAG is the standard for enterprise AI. It decouples knowledge from model weights so you can update knowledge without retraining.
+
+---
+
+## Slide 16 - GraphRAG: Beyond Keywords
+
+**Heading:** Understanding Relationships via Knowledge Graphs
+
+**Content:**
+- Relational Intelligence: Map entities such as people, code, and files
+- Multi-hop Reasoning: Traverse subgraphs to answer interconnected queries
+- Visual: Show nodes and relationship paths between modules and teams
+
+**Notes:**
+GraphRAG excels in domains where context is relational rather than purely textual, such as legal or enterprise architecture.
+
+---
+
+## Slide 17 - AI Code Review Tools
+
+**Heading:** AI as the First Line of Defense
+
+**Content:**
+- Automated PR Summaries: Explain code changes quickly
+- Stylistic and Anti-pattern Detection: Catch common errors before review
+- Security Scanning: Detect leaked secrets and vulnerabilities
+
+**Notes:**
+AI-powered review tools reduce reviewer fatigue and keep obvious bugs and security flaws out of the main branch.
+
+---
+
+## Slide 18 - Security & Safe Betting
+
+**Heading:** Trust but Verify
+
+**Content:**
+- Data Privacy: Ensure PII is not leaked into public models
+- Injection Attacks: Prevent malicious input from hijacking model behavior
+- Core Principle: AI is a suggestion engine, not a truth engine
+
+**Notes:**
+Every production system must include input/output sanitization and audit logs to defend against OWASP LLM Top 10 risks.
+
+---
+
+## Slide 19 - Summary & Q&A
+
+**Heading:** Architectural Thinking Over Prompt Creativity
+
+**Takeaways:**
+- Prompt with Structure: Use R-C-T-C
+- Control with Context: Manage context windows effectively
+- Architect with Agents: Use modular skills and personas
+- Verify with SDD: Treat AI systems as engineered products
+
+**Notes:**
+Apply architectural rigor: codify instructions, ground with RAG, design modular agents, and enforce security and evaluation as part of CI. Q and A.
+
