@@ -39,7 +39,7 @@ This agenda provides a roadmap for moving from conceptual foundations through pr
 
 **Content:**
 - Static Scripts: Hard-coded logic; fixed responses with no learning (e.g., FAQ bots)
-- Generative AI: Conversational and probabilistic; open-ended text, code, and images (e.g., GPT-3, DALL-E)
+- Generative AI: Conversational and probabilistic; open-ended text, code, and images (e.g., early large language models)
 - Agentic Workflows: Autonomous and goal-oriented; uses tool-use and planning loops to act and iterate
 
 **Notes:**
@@ -69,9 +69,9 @@ The R-C-T-C (Role-Context-Task-Constraint) framework is a reliable scaffold for 
 **Content:**
 | Model Type | Examples (2025-26) | Best For | Context/Latency |
 | :--- | :--- | :--- | :--- |
-| Fast / Lightweight | Haiku | Syntax checks, simple Q&A | Low Latency |
-| General Purpose | GPT-5.3-Codex | Daily coding, docs, unit tests | The Daily Driver |
-| Deep Reasoning | Claude Opus 4.6 | Architecture, debugging | High Latency and Cost |
+| Fast help with simple/repetitive tasks | Claude Haiku 4.5 | Syntax checks, simple Q&A | Low Latency |
+| General-purpose coding/writing | GPT-5.3-Codex | Daily coding, docs, unit tests | The Daily Driver |
+| Deep Reasoning & Debugging | Claude Opus 4.6 | Architecture, debugging | High Latency and Cost |
 
 **Notes:**
 Model selection is a trade-off between speed and depth. Lightweight models are ideal for edge tasks; deep reasoning models are necessary for complex system architecture.
@@ -98,7 +98,7 @@ Copilot instructions allow organizations to codify standards, ensuring consisten
 
 **Content:**
 - Standard vs Premium: High-reasoning models often consume more quota
-- Multiplier: Smart models (Opus/o1) may have a 3x multiplier on token costs
+- Multiplier: Smart models (Claude Opus 4.6) may have a higher multiplier on token costs
 - Strategy: Use 'Auto' mode to balance cost and performance automatically
 
 **Notes:**

@@ -36,7 +36,7 @@ Traditional rule-based systems were deterministic and rigid. Each input was matc
 
 ## Generative AI (Large Language Models)
 
-The introduction of generative models (GPT-3.5, GPT-4, Claude) fundamentally changed the playing field. These models introduced probabilistic, open-ended outputs capable of generating text, code, images, and structured data. Instead of matching rules, they learned representations of language from massive datasets, enabling them to compose novel responses tailored to context. This shift from deterministic rule sets to probabilistic models represented a leap in capability—but with a trade-off: less control, more hallucination risk.
+The introduction of generative models (early GPT and Claude variants) fundamentally changed the playing field. These models introduced probabilistic, open-ended outputs capable of generating text, code, images, and structured data. Instead of matching rules, they learned representations of language from massive datasets, enabling them to compose novel responses tailored to context. This shift from deterministic rule sets to probabilistic models represented a leap in capability—but with a trade-off: less control, more hallucination risk.
 
 **Capabilities:**
 - Generate novel, contextual responses
@@ -52,7 +52,7 @@ The introduction of generative models (GPT-3.5, GPT-4, Claude) fundamentally cha
 
 ## Instructable Models (Aligned, Steerable AI)
 
-Reinforcement Learning from Human Feedback (RLHF) and instruction tuning created models that could be guided toward specific behaviors. These models could be "steered" by clear prompts, examples, and constraints. They began to follow instructions reliably and exhibit more predictable behavior. Examples include GPT-4 with system prompts and Claude with constitutional AI alignment techniques.
+Reinforcement Learning from Human Feedback (RLHF) and instruction tuning created models that could be guided toward specific behaviors. These models could be "steered" by clear prompts, examples, and constraints. They began to follow instructions reliably and exhibit more predictable behavior. Examples include early implementations of OpenAI models with system prompts and Anthropic models with constitutional AI alignment techniques.
 
 **Improvements:**
 - More reliable instruction following
@@ -148,17 +148,18 @@ Example Output: {
 
 Selecting the right model for a given task is a critical decision. There is no universal "best" model—only the best model for your specific context, constraints, and requirements. Modern models present trade-offs across several dimensions:
 
-## Lightweight Models
-**Examples:** Claude Haiku, Claude 3.5 Haiku, GPT-4o Mini
+## Fast Help with Simple or Repetitive Tasks
+**Examples:** Claude Haiku 4.5
 
 **Best For:**
-- Real-time inference with strict latency requirements
-- Syntax checking and linting
-- Simple Q&A and retrieval tasks
-- Edge deployment and resource-constrained environments
-- High-volume, low-complexity tasks
+- Quick edits and utility functions
+- Fast help with simple or repetitive tasks
+- Quick syntax or language questions
+- Lightweight prototyping
+- Fast feedback on simple prompts or edits
 
 **Characteristics:**
+- Balances fast responses with quality output
 - Low token consumption (~1x baseline cost)
 - Fast inference (typically <100ms)
 - Cost-effective at scale
@@ -168,81 +169,73 @@ Selecting the right model for a given task is a critical decision. There is no u
 **Example Use Case:**
 ```
 Task: Lint JavaScript code for common errors
-Model: GPT-4o Mini
+Model: Claude Haiku 4.5
 Latency requirement: <50ms per file
-Cost: ~$0.001 per 1K tokens
+Cost: Low token multiplier
 Result: Excellent for fast feedback loops
 ```
 
-## General-Purpose Models
-**Examples:** GPT-5.3-Codex, Claude 3.5 Sonnet, Gemini 1.5 Pro
+## General-Purpose Coding and Writing
+**Examples:** GPT-5.3-Codex
 
 **Best For:**
-- Daily coding assistance and refactoring
-- Document summarization and analysis
-- Multi-step task completion
-- Content creation and adaptation
-- Balanced reasoning and speed
+- Common development tasks
+- Writing or reviewing functions, short files, or code diffs
+- Generating documentation, comments, or summaries
+- Working in a non-English programming environment
 
 **Characteristics:**
-- Balanced reasoning and speed (typically <2 second inference)
-- Broad knowledge across domains
-- Reasonable token costs (1.5-2x lightweight)
+- Agentic software development support
+- Delivers higher-quality code on complex engineering tasks (features, tests, debugging, refactors) without lengthy instructions
+- Reasonable token costs
 - Excellent for "daily driver" tasks
-- Good context windows (100K-200K tokens)
+- Broad knowledge across domains
 
 **Example Use Case:**
 ```
 Task: Write comprehensive test suite for React component
-Model: Claude 3.5 Sonnet
+Model: GPT-5.3-Codex
 Effort: 10-15 minutes of inference
-Cost: ~$0.05 per task
+Cost: Moderate token multiplier
 Result: Production-quality tests with clear assertions
 ```
 
-## Deep Reasoning Models
-**Examples:** Claude 3 Opus 4.6, OpenAI o1, Gemini 2.0 Ultra
+## Deep Reasoning and Debugging
+**Examples:** Claude Opus 4.6
 
 **Best For:**
-- Complex system architecture and design review
-- Deep debugging and root-cause analysis
-- Research and novel problem-solving
-- Multi-hop logical reasoning
-- Strategic planning and trade-off analysis
+- Debugging complex issues with context across multiple files
+- Refactoring large or interconnected codebases
+- Planning features or architecture across layers
+- Analyzing logs, performance data, or system behavior
+- Complex problem-solving challenges and sophisticated reasoning
 
 **Characteristics:**
-- Slower inference (2-10+ seconds)
-- Higher token consumption (often with explicit "thinking" tokens)
-- Higher costs (2-3x general models, sometimes 5-10x)
-- Substantially better reasoning quality
+- Anthropic's most powerful model
+- Improves on Claude Opus 4.5
 - Exceptional at complex reasoning chains
+- Higher token consumption
+- Premium token costs
 
 **Example Use Case:**
 ```
 Task: Design fault-tolerant distributed payment system
 Model: Claude Opus 4.6
 Latency: 8-10 seconds (acceptable for architecture work)
-Cost: ~$2.00-$5.00 per comprehensive design
+Cost: Premium token multiplier
 Result: Thorough trade-off analysis, failure scenarios, recovery procedures
 ```
-
-## Specialized Models
-**Domain-Specific Examples:**
-- **Legal/Compliance:** Models fine-tuned on legal corpora (Westlaw, LexisNexis)
-- **Medical:** PubMed-specialized models with biomedical knowledge
-- **Code:** Codex-derived models optimized for programming languages
-- **On-Premises:** Llama 3.3, Mistral, allowing private deployment without data exfiltration
 
 **Key Insight:** Match model cost and latency to task complexity. Use lightweight models for high-volume, low-complexity tasks. Reserve deep reasoning models for problems that genuinely require extended reasoning and architectural thinking.
 
 **Cost Optimization Matrix:**
 ```
-Task Complexity  | Model Selection | Example Cost | Latency Tolerance
-Simple Q&A       | Haiku           | $0.001       | <100ms
-Code Suggestion  | Mini            | $0.005       | <500ms
-Feature Build    | Sonnet          | $0.05        | <5s
-Architecture     | Opus/o1         | $2.00        | <30s
-Research Task    | Opus/o1         | $5.00        | Minutes OK
+Task Complexity  | Model Selection | Estimated Cost   | Latency Tolerance
+Simple Q&A       | Haiku 4.5       | Low multiplier   | <100ms
+Code Suggestion  | Haiku 4.5       | Low multiplier   | <500ms
+Feature Build    | GPT-5.3-Codex   | Base multiplier  | <5s
+Architecture     | Opus 4.6        | Premium mult.    | <30s
+Research Task    | Opus 4.6        | Premium mult.    | Minutes OK
 ```
 
 ---
@@ -342,26 +335,25 @@ As AI becomes a production utility, understanding token economics becomes a fina
 
 Different models have dramatically different token consumption profiles:
 
-- **Fast models (Haiku, Mini):** ~1x token cost relative to baseline
-- **General models (Sonnet, GPT-4.1):** ~2-2.5x token multiplier
-- **Reasoning models (Opus, o1):** 3-5x token multiplier
-- **Extended thinking models (o1-pro):** May generate separate "thinking" tokens (not charged but consume context)
+- **Fast models (Haiku 4.5):** Lowest token multiplier relative to baseline
+- **General models (GPT-5.3-Codex):** Moderate token multiplier
+- **Reasoning models (Opus 4.6):** Premium token multiplier
 
 **Real-world example:**
 ```
 Task: Generate a 100-line TypeScript function
 
-Model: GPT-4o Mini
+Model: Claude Haiku 4.5
 Input tokens: 500
 Output tokens: 150
-Total: 650 tokens @ $0.075/1M = $0.00005 cost
+Cost profile: Base multiplier
+Total cost: Lowest execution cost
 
-Model: Claude Opus
+Model: Claude Opus 4.6
 Input tokens: 500
 Output tokens: 150
-Total: 650 tokens @ $15/1M = $0.01 cost
-
-Difference: 200x more expensive for same task
+Cost profile: Premium multiplier
+Total cost: Significantly more expensive for same task
 ```
 
 A task that costs $0.10 using a lightweight model can cost $2.00-$5.00 using a deep reasoning model. At scale (millions of API calls), this compounds quickly.
@@ -393,12 +385,11 @@ The future of AI engineering is not "use the best model for everything"—it's "
 ```
 Team: 5 engineers
 Daily AI usage:
-  - Standard coding: 500K tokens/day with Sonnet @ $7.50
-  - Architecture reviews: 100K tokens/week with Opus @ $1.50/week
-  - Research tasks: 200K tokens/week with Opus @ $3.00/week
+  - Standard coding: 500K tokens/day with GPT-5.3-Codex
+  - Architecture reviews: 100K tokens/week with Opus 4.6
+  - Research tasks: 200K tokens/week with Opus 4.6
   
-Monthly spend: ~$225 (sustainable)
-Optimization opportunity: Use Haiku for syntax checks = save ~$50/month
+Monthly optimization strategy: Use Haiku 4.5 for syntax checks and simple repetitive tasks to save quota.
 ```
 
 ---
@@ -1429,27 +1420,24 @@ Identify the appropriate model(s) for the job. This requires testing and benchma
 *Process:*
 ```
 Candidates:
-  1. Claude Opus 4.6 (deep reasoning, $15/1M tokens) ← Selected
-  2. GPT-4.1 (general purpose, $30/1M tokens)
-  3. Llama 70B (on-prem, fine-tuning friendly, latency 2-5 sec)
+  1. Claude Opus 4.6 (deep reasoning, highly capable) ← Selected
+  2. GPT-5.3-Codex (general purpose code/agent tasks)
+  3. Claude Haiku 4.5 (fast, lighter reasoning)
 
 Evaluation:
   - Task complexity: Code review requires understanding intent, spotting performance bugs, security issues
     (High complexity → favor reasoning models)
   - Latency requirement: Review happens offline (not blocking dev workflow)
     (No latency pressure → can use slower models)
-  - Cost constraint: $0.05/PR max
-    (Opacity at $15/1M allows ~3 high-complexity reviews per PR, acceptable)
-  - Security: No code leaves enterprise
-    (Rules out GPT-4.1 Cloud; Llama 70B on-prem is viable but harder to maintain)
+  - Cost constraint: Moderate budget
+    (Allows deep reasoning models if they reduce human oversight time significantly)
 
-Decision: Claude Opus
+Decision: Claude Opus 4.6
 Reasoning:
   - Code review requires nuanced judgment (security reasoning, performance patterns)
   - We can afford the latency (review happens offline)
-  - Cost per PR review ~$0.02 (within budget)
-  - Model is cloud-hosted but meets security requirements
-  - Confidence: High (77% cost savings vs Llama ops burden)
+  - Model handles complex problem-solving challenges
+  - Confidence: High
 ```
 
 **Agent: How will the system operate?**
@@ -1642,10 +1630,10 @@ pgvector: Simplest ops, lower performance, zero cost
 Converts text into vectors. Quality of embeddings directly impacts retrieval accuracy.
 
 *Popular models:*
-- **OpenAI `text-embedding-3-large`:** Top quality, $0.13/1M tokens input
-- **Claude Embeddings:** Efficient, integrated with Claude, optimized for reasoning
-- **Open-source `nomic-embed-text`:** Free, on-prem capable, competitive quality
-- **Cohere Embed:** Good balance of quality and cost
+- **Top quality generative embeddings:** High quality, moderate cost
+- **Integrated custom Embeddings:** Efficient, optimized for reasoning
+- **Open-source text embeddings:** Free, on-prem capable, competitive quality
+- **Balanced Embeddings:** Good balance of quality and cost
 
 *Quality considerations:*
 ```
